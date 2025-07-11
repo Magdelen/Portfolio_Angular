@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+
+@import "aos/dist/aos.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply transition-colors duration-300;
+}
+
+.typed-cursor {
+  font-size: 1.25rem;
+  opacity: 0.7;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 0; }
+}
