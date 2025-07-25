@@ -1,55 +1,378 @@
-<main class="font-sans transition-colors duration-300 bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
-
-
-  <!-- Hero -->
-<section data-aos="fade-up" class="text-center pt-16 aos-init aos-animate">
-
-    <h1 class="text-5xl font-bold">
-      Hi, I'm <span class="text-teal-500">Bibiana Magdelene</span>
-    </h1>
-  <div class="text-xl mt-4 h-auto min-h-[1.75rem] inline-block align-middle">
-  <span id="typed" class="whitespace-nowrap"></span>
-</div>
-
-  </section>
-
-  <!-- About -->
-  <section class="py-16 px-6 text-center max-w-3xl mx-auto" data-aos="fade-up">
-    <h2 class="text-3xl font-bold mb-4">About Me</h2>
-   <p>
-    I'm a Full Stack Developer with ~2 years of experience at <strong>Innoart</strong>, where I specialized in building secure authentication systems, enterprise-grade APIs, and scalable front-end applications using the <strong>MEAN stack</strong>. 
-    My work has spanned high-impact projects involving <strong>Microsoft Entra ID integrations</strong>, biometric access systems, and modular refactors of legacy codebases. I’m passionate about clean code, performance optimization, and delivering seamless user experiences in high-security environments.
-  </p>
-  </section>
-
-  <!-- Projects -->
-<section class="bg-gray-100 dark:bg-gray-800 py-16 px-6" data-aos="fade-up">
-  <h2 class="text-3xl font-bold text-center mb-8">Highlighted Projects</h2>
-  <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-    <div *ngFor="let project of projects" class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow hover:scale-105 transition-transform border border-gray-200 dark:border-gray-700">
-      <h3 class="text-xl font-semibold mb-2">{{ project.name }}</h3>
-      <p class="text-sm mb-2">{{ project.description }}</p>
-      <p class="text-xs text-gray-500 dark:text-gray-400">{{ project.tech }}</p>
+<!-- Navigation -->
+<nav class="fixed top-0 w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-md z-50 border-b border-gray-200 dark:border-gray-700">
+  <div class="max-w-6xl mx-auto px-6 py-4">
+    <div class="flex justify-between items-center">
+      <h1 class="text-xl font-bold text-teal-600 dark:text-teal-400">BM</h1>
+      <div class="hidden md:flex space-x-8">
+        <a (click)="scrollToSection('about')" class="text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 cursor-pointer transition-colors">About</a>
+        <a (click)="scrollToSection('experience')" class="text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 cursor-pointer transition-colors">Experience</a>
+        <a (click)="scrollToSection('projects')" class="text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 cursor-pointer transition-colors">Projects</a>
+        <a (click)="scrollToSection('skills')" class="text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 cursor-pointer transition-colors">Skills</a>
+        <a (click)="scrollToSection('contact')" class="text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 cursor-pointer transition-colors">Contact</a>
+      </div>
+      <button 
+        (click)="toggleTheme()" 
+        class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+        <span class="text-xl">{{ isDarkMode ? '☀️' : '🌙' }}</span>
+      </button>
     </div>
   </div>
-</section>
+</nav>
 
+<main class="font-sans transition-colors duration-300 bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
 
-  <!-- Skills -->
-  <section class="py-16 px-6 text-center" data-aos="fade-up">
-    <h2 class="text-3xl font-bold mb-6">Skills</h2>
-    <div class="flex flex-wrap justify-center gap-3 text-sm">
-      <span *ngFor="let skill of skills" class="bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-1 rounded">
-        {{ skill }}
-      </span>
+  <!-- Hero Section -->
+  <section class="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-teal-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <!-- Animated Background Elements -->
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute -top-40 -right-40 w-80 h-80 bg-teal-100 dark:bg-teal-900 rounded-full opacity-20 animate-pulse"></div>
+      <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-100 dark:bg-blue-900 rounded-full opacity-20 animate-pulse delay-1000"></div>
+    </div>
+    
+    <div class="text-center z-10 px-6" data-aos="fade-up">
+      <!-- <div class="mb-8">
+        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b1e5?w=200&h=200&fit=crop&crop=face" 
+             alt="Bibiana Magdelene" 
+             class="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-teal-500 shadow-lg hover:scale-105 transition-transform duration-300">
+      </div> -->
+      
+      <h1 class="text-6xl md:text-7xl font-bold mb-6">
+        Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-blue-600">Bibiana Magdelene</span>
+      </h1>
+      
+      <div class="text-2xl md:text-3xl text-gray-600 dark:text-gray-300 mb-8 h-16">
+        <span id="typed" class="whitespace-nowrap"></span>
+      </div>
+      
+      <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-8 leading-relaxed">
+        Full Stack Developer specializing in enterprise-grade applications with ~2 years of experience building secure, scalable solutions using the MEAN stack.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <button (click)="scrollToSection('projects')" 
+                class="px-8 py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-all duration-300 transform hover:scale-105 shadow-lg">
+          View My Work
+        </button>
+     <button (click)="downloadResume()" 
+  class="px-8 py-3 border-2 border-teal-600 text-teal-600 dark:text-teal-400 rounded-lg hover:bg-teal-600 hover:text-white transition-all duration-300 transform hover:scale-105">
+   Download Resume
+</button>
+
+      </div>
     </div>
   </section>
 
-  <!-- Contact -->
-  <section class="bg-gray-800 text-white py-16 px-6 text-center" data-aos="fade-up">
-    <h2 class="text-3xl font-bold mb-4">Contact</h2>
-    <p>Email: <a class="text-teal-400 underline" href="mailto:magdeleneandbibiana&#64;gmail.com">magdeleneandbibiana&#64;gmail.com</a></p>
-    <p>LinkedIn: <a class="text-teal-400 underline" href="https://linkedin.com/in/bibiana-magdelene">linkedin.com/in/bibiana-magdelene</a></p>
-    <p>GitHub: <a class="text-teal-400 underline" href="https://github.com/Magdelen">github.com/Magdelen</a></p>
+  <!-- About Section -->
+  <section id="about" class="py-20 px-6" data-aos="fade-up">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-4xl font-bold text-center mb-12">About Me</h2>
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6">
+          <p class="text-lg leading-relaxed text-gray-600 dark:text-gray-300">
+            I'm a passionate Full Stack Developer with ~2 years of experience at <strong class="text-teal-600">Innoart</strong>, 
+            where I've specialized in building secure authentication systems, enterprise-grade APIs, and scalable front-end applications.
+          </p>
+          <p class="text-lg leading-relaxed text-gray-600 dark:text-gray-300">
+            My expertise spans high-impact projects involving <strong class="text-teal-600">Microsoft Entra ID integrations</strong>, 
+            biometric access systems, and comprehensive refactoring of legacy codebases. I'm passionate about clean code, 
+            performance optimization, and delivering seamless user experiences in high-security environments.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <span class="px-3 py-1 bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 rounded-full text-sm">
+              🎯 Problem Solver
+            </span>
+            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">
+              🚀 Innovation Driven
+            </span>
+            <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm">
+              🔒 Security Focused
+            </span>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="bg-gradient-to-br from-teal-50 to-blue-50 dark:from-gray-800 dark:to-gray-700 p-8 rounded-2xl shadow-lg">
+            <h3 class="text-xl font-semibold mb-4 text-teal-600 dark:text-teal-400">Quick Facts</h3>
+            <ul class="space-y-3 text-gray-600 dark:text-gray-300">
+              <li class="flex items-center">
+                <span class="text-teal-500 mr-3">📍</span>
+                Based in Chennai, Tamil Nadu, India
+              </li>
+              <li class="flex items-center">
+                <span class="text-teal-500 mr-3">💼</span>
+                ~2 Years of Professional Experience
+              </li>
+              <li class="flex items-center">
+                <span class="text-teal-500 mr-3">🎓</span>
+                B.E Computer Science, Anna University
+              </li>
+              <li class="flex items-center">
+                <span class="text-teal-500 mr-3">🏆</span>
+                Enterprise Application Specialist
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
+
+  <!-- Work Experience Section -->
+  <section id="experience" class="py-20 px-6 bg-gray-50 dark:bg-gray-800" data-aos="fade-up">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl font-bold text-center mb-12">Professional Experience</h2>
+      
+      <div class="space-y-8">
+        <div *ngFor="let exp of workExperience" class="bg-white dark:bg-gray-900 rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+            <div>
+              <h3 class="text-2xl font-bold text-teal-600 dark:text-teal-400">{{ exp.role }}</h3>
+              <h4 class="text-xl font-semibold text-gray-800 dark:text-gray-200">{{ exp.company }}</h4>
+              <p class="text-gray-600 dark:text-gray-400">{{ exp.location }}</p>
+            </div>
+            <div class="mt-4 md:mt-0">
+              <span class="px-4 py-2 bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 rounded-full text-sm font-medium">
+                {{ exp.duration }}
+              </span>
+            </div>
+          </div>
+          
+          <div class="mb-6">
+            <h5 class="text-lg font-semibold mb-3 text-gray-800 dark:text-gray-200">Key Achievements:</h5>
+            <ul class="space-y-2">
+              <li *ngFor="let achievement of exp.achievements" class="flex items-start">
+                <span class="text-teal-500 mr-3 mt-1 flex-shrink-0">✨</span>
+                <span class="text-gray-600 dark:text-gray-300">{{ achievement }}</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h5 class="text-lg font-semibold mb-3 text-gray-800 dark:text-gray-200">Technologies Used:</h5>
+            <div class="flex flex-wrap gap-2">
+              <span *ngFor="let tech of exp.technologies" 
+                    class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm hover:bg-teal-100 dark:hover:bg-teal-800 transition-colors">
+                {{ tech }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Education Section -->
+      <div class="mt-16">
+        <h3 class="text-3xl font-bold text-center mb-8">Education</h3>
+        <div class="grid md:grid-cols-1 gap-6 max-w-3xl mx-auto">
+          <div *ngFor="let edu of education" class="bg-white dark:bg-gray-900 rounded-xl shadow-lg p-6 border border-gray-200 dark:border-gray-700">
+            <h4 class="text-xl font-semibold text-teal-600 dark:text-teal-400 mb-2">{{ edu.degree }}</h4>
+            <p class="text-lg text-gray-800 dark:text-gray-200">{{ edu.institution }}</p>
+            <div class="flex justify-between items-center mt-2">
+              <span class="text-gray-600 dark:text-gray-400">{{ edu.year }}</span>
+              <span *ngIf="edu.grade" class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm">
+                {{ edu.grade }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Projects Section -->
+  <section id="projects" class="py-20 px-6" data-aos="fade-up">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl font-bold text-center mb-4">Featured Projects</h2>
+      <p class="text-center text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto">
+        Here are some of my key projects that showcase my expertise in full-stack development, 
+        security integrations, and enterprise solutions.
+      </p>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        <div *ngFor="let project of keyProjects; let i = index" 
+             class="group bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-200 dark:border-gray-700 hover:border-teal-500 dark:hover:border-teal-400"
+             [attr.data-aos]="'fade-up'"
+             [attr.data-aos-delay]="i * 100">
+          
+          <div class="p-8">
+            <div class="flex items-center mb-4">
+              <span class="text-3xl mr-4">{{ project.icon }}</span>
+              <div>
+                <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
+                  {{ project.name }}
+                </h3>
+                <span class="text-sm text-teal-600 dark:text-teal-400 font-medium">{{ project.category }}</span>
+              </div>
+            </div>
+            
+            <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">{{ project.description }}</p>
+            
+            <div class="border-t border-gray-200 dark:border-gray-700 pt-4">
+              <p class="text-sm text-gray-500 dark:text-gray-400 font-medium">Technologies:</p>
+              <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">{{ project.tech }}</p>
+            </div>
+          </div>
+          
+          <div class="h-1 bg-gradient-to-r from-teal-500 to-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+        </div>
+      </div>
+
+      <!-- Other Projects -->
+      <div class="mt-16">
+        <h3 class="text-3xl font-bold text-center mb-8">Other Notable Projects</h3>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div *ngFor="let project of otherProjects; let i = index" 
+               class="bg-white dark:bg-gray-900 rounded-lg p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-gray-700"
+               [attr.data-aos]="'fade-up'"
+               [attr.data-aos-delay]="i * 100">
+            <div class="text-center">
+              <span class="text-2xl mb-3 block">{{ project.icon }}</span>
+              <h4 class="text-lg font-semibold mb-2 text-gray-800 dark:text-gray-200">{{ project.name }}</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">{{ project.description }}</p>
+              <p class="text-xs text-teal-600 dark:text-teal-400">{{ project.tech }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="py-20 px-6 bg-gray-50 dark:bg-gray-800" data-aos="fade-up">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl font-bold text-center mb-12">Technical Skills</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div *ngFor="let category of ['Frontend', 'Backend', 'Database']" class="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+          <h3 class="text-xl font-semibold mb-6 text-teal-600 dark:text-teal-400 text-center">{{ category }}</h3>
+          <div class="space-y-4">
+            <div *ngFor="let skill of getSkillsByCategory(category)" class="relative">
+              <div class="flex justify-between mb-2">
+                <span class="text-sm font-medium text-gray-700 dark:text-gray-300">{{ skill.name }}</span>
+                <span class="text-sm text-gray-500 dark:text-gray-400">{{ skill.level }}%</span>
+              </div>
+              <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                <div class="bg-gradient-to-r from-teal-500 to-blue-500 h-2 rounded-full transition-all duration-1000"
+                     [style.width.%]="skill.level"
+                     [attr.data-aos]="'slide-right'"
+                     [attr.data-aos-delay]="100"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div *ngFor="let category of ['Language', 'Security', 'DevOps']" class="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+          <h3 class="text-xl font-semibold mb-6 text-teal-600 dark:text-teal-400 text-center">{{ category }}</h3>
+          <div class="space-y-4">
+            <div *ngFor="let skill of getSkillsByCategory(category)" class="relative">
+              <div class="flex justify-between mb-2">
+                <span class="text-sm font-medium text-gray-700 dark:text-gray-300">{{ skill.name }}</span>
+                <span class="text-sm text-gray-500 dark:text-gray-400">{{ skill.level }}%</span>
+              </div>
+              <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                <div class="bg-gradient-to-r from-teal-500 to-blue-500 h-2 rounded-full transition-all duration-1000"
+                     [style.width.%]="skill.level"
+                     [attr.data-aos]="'slide-right'"
+                     [attr.data-aos-delay]="100"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+          <h3 class="text-xl font-semibold mb-6 text-teal-600 dark:text-teal-400 text-center">Cloud</h3>
+          <div class="space-y-4">
+            <div *ngFor="let skill of getSkillsByCategory('Cloud')" class="relative">
+              <div class="flex justify-between mb-2">
+                <span class="text-sm font-medium text-gray-700 dark:text-gray-300">{{ skill.name }}</span>
+                <span class="text-sm text-gray-500 dark:text-gray-400">{{ skill.level }}%</span>
+              </div>
+              <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                <div class="bg-gradient-to-r from-teal-500 to-blue-500 h-2 rounded-full transition-all duration-1000"
+                     [style.width.%]="skill.level"
+                     [attr.data-aos]="'slide-right'"
+                     [attr.data-aos-delay]="100"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certifications -->
+      <div class="mt-16">
+        <h3 class="text-3xl font-bold text-center mb-8">Certifications</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div *ngFor="let cert of certifications" 
+               class="bg-white dark:bg-gray-900 rounded-lg p-4 text-center shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-gray-700">
+            <div class="text-2xl mb-2">🏆</div>
+            <p class="text-sm font-medium text-gray-700 dark:text-gray-300">{{ cert }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 px-6 bg-gradient-to-br from-teal-600 to-blue-700 dark:from-teal-800 dark:to-blue-900 text-white" data-aos="fade-up">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-4xl font-bold mb-6">Let's Work Together</h2>
+      <p class="text-xl mb-12 text-teal-100 max-w-2xl mx-auto">
+        I'm always interested in discussing new opportunities, innovative projects, or just connecting with fellow developers.
+      </p>
+     <div class="grid md:grid-cols-3 gap-8 mb-12">
+  <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300">
+    <div class="text-3xl mb-4">📧</div>
+    <h3 class="text-lg font-semibold mb-2">Email</h3>
+    <a href="mailto:magdeleneandbibiana&#64;gmail.com" 
+       class="text-teal-200 hover:text-white transition-colors break-all">
+      magdeleneandbibiana&#64;gmail.com
+    </a>
+  </div>
+  
+        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300">
+          <div class="text-3xl mb-4">💼</div>
+          <h3 class="text-lg font-semibold mb-2">LinkedIn</h3>
+          <a href="https://linkedin.com/in/bibiana-magdelene" 
+             target="_blank"
+             class="text-teal-200 hover:text-white transition-colors">
+            linkedin.com/in/bibiana-magdelene
+          </a>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300">
+          <div class="text-3xl mb-4">🐙</div>
+          <h3 class="text-lg font-semibold mb-2">GitHub</h3>
+          <a href="https://github.com/Magdelen" 
+             target="_blank"
+             class="text-teal-200 hover:text-white transition-colors">
+            github.com/Magdelen
+          </a>
+        </div>
+      </div>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="mailto:magdeleneandbibiana&#64;gmail.com" 
+           class="px-8 py-3 bg-white text-teal-600 rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg font-semibold">
+          Send Message
+        </a>
+        <button (click)="downloadResume()" 
+                class="px-8 py-3 border-2 border-white text-white rounded-lg hover:bg-white hover:text-teal-600 transition-all duration-300 transform hover:scale-105 font-semibold">
+          Download Resume
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 dark:bg-black text-white py-8 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="text-gray-400 mb-4">
+        Built with Angular, TypeScript, and lots of ☕
+      </p>
+      <p class="text-gray-500 text-sm">
+        © 2024 Bibiana Magdelene. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
 </main>
+
+<a href="../assets/magdelene__resume.pdf"></a>
